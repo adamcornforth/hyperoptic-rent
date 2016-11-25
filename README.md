@@ -6,21 +6,9 @@ Quick scraper which returns the "enabled" Hyperoptic locations for a given Postc
 
 ## Instructions 
 
-Install with `npm install`, run with `node main.js`. 
+Install with `npm install`, run with `npm start`. 
+
+Access the project at `localhost:3000`.
 
 ## Sample Output 
-
-```
-$node main.js
-63: Dalston Square (E8)
-137: Highbury Stadium Square (N5)
-139: Grove End House (NW8)
-231: St Williams Court (N1)
-315: St Pancras Chambers (NW1)
-439: Pavilion Apartments (NW8)
-467: North Gate (NW8)
-475: Keeling House (E2)
-501: Suttons Wharf (E2)
-658: Beaux Arts (N7)
-...
-```
+![Sample output](http://i.imgur.com/H2N4YkQ.png)

@@ -1,0 +1,15 @@
+{
+  "name": "beat-herder",
+  "version": "1.0.0",
+  "description": "Web scraper for getting line-up data from the beatherder.co.uk website",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Cornforth",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.73.0",
+    "x-ray": "^2.3.0"
+  }
+}

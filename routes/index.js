@@ -1,6 +1,12 @@
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { match, RouterContext } from 'react-router';
+import routes from './../src/routes';
+import NotFoundPage from './../src/components/NotFoundPage';
+
 const express = require('express');
-const hyperoptic = require('../hyperoptic');
-const zoopla = require('../zoopla');
+const hyperoptic = require('./models/hyperoptic');
+const zoopla = require('./models/zoopla');
 const Fuse = require('fuse.js');
 
 const router = express.Router();
@@ -17,30 +23,37 @@ const options = {
   ],
 };
 
-/* GET home page. */
-router.get('/', (req, res, next) => {
-  hyperoptic.getLocations('N7')
-    .then((locations) => {
-      zoopla.getRentals('N7')
-        .then((rentals) => {
-          // initiate a fuzzy search on the rentals
-          const fuse = new Fuse(rentals, options);
-          const results = [];
+// universal routing and rendering
+router.get('/', (req, res, err) => {
+  match(
+    { routes, location: req.url },
+    (err, redirectLocation, renderProps) => {
 
-          locations.forEach((location) => {
-            const result = fuse.search(location.siteName.replace('The', ''));
-            // store the location we've matched with
-            result.location = location;
-            results.push(result);
-          });
+      // in case of error display the error message
+      if (err) {
+        return res.status(500).send(err.message);
+      }
 
-          res.render('index', { title: 'Hyperoptic Rentals in N7', district: 'N7', results, locations, rentals });
-        })
-        .catch(next);
-    })
-    .catch((err) => {
-      res.render('error', { message: 'Error', error: err });
-    });
+      // in case of redirect propagate the redirect to the browser
+      if (redirectLocation) {
+        return res.redirect(302, redirectLocation.pathname + redirectLocation.search);
+      }
+
+      // generate the React markup for the current route
+      let markup;
+      if (renderProps) {
+        // if the current route matched we have renderProps
+        markup = renderToString(<RouterContext {...renderProps}/>);
+      } else {
+        // otherwise we can render a 404 page
+        markup = renderToString(<NotFoundPage/>);
+        res.status(404);
+      }
+
+      res.render('index', { markup });
+
+    },
+  );
 });
 
 module.exports = router;

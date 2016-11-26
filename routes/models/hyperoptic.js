@@ -3,7 +3,7 @@
 // var x = Xray();
 
 // just cache a set of locations for now so we don't bug hyperoptic's servers!
-let locations = require('./locations');
+let locations = require('./data/locations');
 
 module.exports = {
   getLocations() {

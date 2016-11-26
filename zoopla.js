@@ -1,15 +1,12 @@
-var request = require('request');
-var Xray = require('x-ray');
-var x = Xray();
-
+// var request = require('request');
+// const Xray = require('x-ray');
 // just cache a set of rentals for now so we don't bug hyperoptic's servers!
-var rentals = require('./rentals');
+const rentals = require('./rentals');
+
+// const x = Xray();
 
 module.exports = {
-  getRentals : function(postcode) {
-    return new Promise(function(resolve, reject) {
-        // reject({'status':404, 'message': "No response from Zoopla..."});
-        resolve(rentals.listing);   
-    }) 
-  }
+  getRentals() {
+    return new Promise(resolve => resolve(rentals.listing));
+  },
 };

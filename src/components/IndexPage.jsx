@@ -21,8 +21,10 @@ export default class IndexPage extends React.Component {
       return (
         <div>
           {
-            this.state.items.map((result) => {
-              return <div>{result.location.siteName}</div>  
+            this.state.items.map((result, id) => {
+              return (<div key={result.location.siteId}>
+                {result.location.siteName}
+              </div>)
             })
           }
         </div>

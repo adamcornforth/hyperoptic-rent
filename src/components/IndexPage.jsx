@@ -40,7 +40,25 @@ export default class IndexPage extends React.Component {
           {
             this.state.items.map((result, id) => {
               return (<div key={result.location.siteId}>
-                {result.location.siteName} - test
+                <a href={"https://www.hyperoptic.com/live/?siteid="+result.location.siteId}>
+                  {result.location.siteName}
+                </a>
+                <div>
+                  <ul>
+                    {
+                      result.result.map((rental, rental_id) => {
+                        {
+                          return (<div key={rental_id}>
+                            £{rental.item.rental_prices.per_month}: 
+                            <a href={rental.item.details_url}>
+                              {rental.item.displayable_address}
+                            </a>
+                          </div>)
+                        }
+                      })
+                    }
+                  </ul>
+                </div>
               </div>)
             })
           }

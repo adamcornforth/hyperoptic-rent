@@ -1,15 +1,15 @@
-// var request = require('request');
-// var Xray = require('x-ray');
-// var x = Xray();
+var request = require('request');
+var Xray = require('x-ray');
+var x = Xray();
 
 // just cache a set of locations for now so we don't bug hyperoptic's servers!
 let locations = require('./data/locations');
 
 module.exports = {
-  getLocations() {
+  getLocations(postcode) {
     // uncomment to
     // return new Promise(function(resolve, reject) {
-    //   request('https://www.hyperoptic.com/map/?q='+district, function (error, response) {
+    //   request('https://www.hyperoptic.com/map/?q='+postcode, function (error, response) {
     //     // If we've got a response...
     //     if (!error && response.statusCode == 200) {
     //       // Grab the <head> tag
@@ -18,12 +18,12 @@ module.exports = {
     //         var locations_str = script.substring(script.indexOf('var locations = ')+17,
     //          script.indexOf('}];') +1);
     //         var locations = JSON.parse("[" + locations_str + "]");
-
+    //
     //         // Filter to only include locations Taking Orders
     //         locations = locations.filter(function(location) {
     //           return location.status == 'Taking Orders';
     //         });
-
+    //
     //         resolve(locations);
     //       });
     //     } else {

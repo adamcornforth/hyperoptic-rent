@@ -20,14 +20,15 @@ const options = {
 /**
  * Gets the matched locations
  */
-router.get('/locations', (req, res, next) => {
-  hyperoptic.getLocations('N7')
+router.get('/locations/:postcode', (req, res, next) => {
+  const postcode = req.params.postcode;
+  hyperoptic.getLocations(postcode)
     .then((locations) => {
-      zoopla.getRentals('N7')
+      zoopla.getRentals(postcode)
         .then((rentals) => {
           // initiate a fuzzy search on the rentals
-          const fuse = new Fuse(rentals, options);
-          const results = [];
+          const fuse = new Fuse(rentals, options),
+            results = [];
 
           locations.forEach((location) => {
             let result = fuse.search(location.siteName.replace('The', ''));

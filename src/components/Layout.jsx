@@ -7,16 +7,16 @@ export default class Layout extends React.Component {
     return (
       <div className="app-container">
         <header>
-          <h1>
-            Hyperoptic Rentals
-          </h1>
+          {/*<h1>*/}
+            {/*Hyperoptic Rentals*/}
+          {/*</h1>*/}
         </header>
         <div className="app-content">{this.props.children}</div>
         <footer>
-          <p>
-            Rental information provided 
-            by the <a href="http://developer.zoopla.com/" target="blank">Zoopla Property API</a>.
-          </p>
+          {/*<p>*/}
+            {/*Rental information provided */}
+            {/*by the <a href="http://developer.zoopla.com/" target="blank">Zoopla Property API</a>.*/}
+          {/*</p>*/}
         </footer>
       </div>
     );

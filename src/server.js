@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'static')));
 
 app.use('/', index);
-app.get('/locations', locations);
+app.get('/locations/:postcode', locations);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

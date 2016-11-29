@@ -48,7 +48,7 @@ export default class IndexPage extends React.Component {
   handleBlur(event) {
     this.setState({postcode:event.target.value});
 
-    fetch('/locations')
+    fetch('/locations/'+event.target.value)
       .then((result) => {
         return result.json();
       })

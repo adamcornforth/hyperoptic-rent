@@ -9,10 +9,10 @@ const locationMarker = {
   left: -K_SIZE / 2,
   top: -K_SIZE / 2,
 
-  border: '1px solid #fff',
-  borderRadius: K_SIZE + 3,
-  backgroundColor: '#ca1a1a',
-  padding: 1,
+  border: '1px solid #b39457',
+  borderRadius: 8,
+  backgroundColor: '#ffefb1',
+  padding: 5,
   cursor: 'pointer'
 };
 
@@ -29,7 +29,7 @@ const locationMarkerText = {
   cursor: 'pointer',
   display: 'block',
   width: '300px',
-  marginTop: '-9px',
+  marginTop: '-11px',
   marginLeft: '7px'
 };
 

@@ -10,7 +10,7 @@ const locationMarker = {
   top: -K_SIZE / 2,
 
   border: '1px solid #b39457',
-  borderRadius: 8,
+  borderRadius: 6,
   backgroundColor: '#ffefb1',
   padding: 5,
   cursor: 'pointer'

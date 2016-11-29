@@ -1,6 +1,7 @@
 // src/components/LocationsList.jsx
 import React, {PropTypes, Component} from 'react';
 import GoogleMap from 'google-map-react';
+import { Media, Panel } from 'react-bootstrap';
 
 export default class LocationsList extends React.Component {
     constructor() {
@@ -12,33 +13,48 @@ export default class LocationsList extends React.Component {
 
     render() {
         if(this.props.items) {
-            return (<div>
-                {
-                    this.props.items.map((result, id) => {
-                        return (<div key={result.location.siteId}>
-                            <a href={"https://www.hyperoptic.com/live/?siteid="+result.location.siteId}>
-                                {result.location.siteName}
-                            </a>
-                            <div>
-                                <ul>
+            return (
+                <Panel>
+                    <Media.List>
+                    {
+                        this.props.items.map((result, id) => {
+                            return (<Media.ListItem key={result.location.siteId}>
+                                <Media.Left>
+                                    <a href={"https://www.hyperoptic.com/live/?siteid="+result.location.siteId}>
+                                        <img width={64} height="auto" src={result.location.imageSiteLink} alt="Location" />
+                                    </a>
+                                </Media.Left>
+                                <Media.Body>
+                                    <Media.Heading>
+                                        <a href={"https://www.hyperoptic.com/live/?siteid="+result.location.siteId}>
+                                            {result.location.siteName}
+                                        </a>
+                                    </Media.Heading>
+
                                     {
                                         result.result.map((rental, rental_id) => {
                                             {
-                                                return (<div key={rental_id}>
-                                                    £{rental.item.rental_prices.per_month}:
-                                                    <a href={rental.item.details_url}>
-                                                        {rental.item.displayable_address}
-                                                    </a>
-                                                </div>)
+                                                return (<Media key={rental_id}>
+                                                            <Media.Left>
+                                                                <img width={128} height="auto" src={rental.item.image_354_255_url} alt="Rental" />
+                                                            </Media.Left>
+                                                            <Media.Body>
+                                                                <a href={rental.item.details_url}>
+                                                                    {rental.item.displayable_address}
+                                                                </a>
+                                                                <br />  
+                                                                £{rental.item.rental_prices.per_month}
+                                                            </Media.Body>
+                                                </Media>)
                                             }
                                         })
                                     }
-                                </ul>
-                            </div>
-                        </div>)
-                    })
-                }
-            </div>);
+                                </Media.Body>
+                            </Media.ListItem>)
+                        })
+                    }
+                </Media.List>
+            </Panel>);
         } else {
             return (
                 <div className="home">

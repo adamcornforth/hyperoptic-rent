@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon src/server.js --watch src/ --watch routes/ --exec babel-node",
+    "start": "nodemon src/server.js --watch --watch routes/ --exec babel-node & webpack-dev-server --inline --progress --watch --hot",
     "build": "babel src -d dist",
     "serve": "node dist/index.js"
   },
@@ -43,6 +43,7 @@
     "http-server": "^0.9.0",
     "nodemon": "^1.11.0",
     "react-controllables": "^0.6.0",
+    "react-hot-loader": "^1.3.1",
     "react-pure-render": "^1.0.2",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"

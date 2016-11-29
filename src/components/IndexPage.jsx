@@ -3,6 +3,7 @@ import React, {PropTypes, Component} from 'react';
 import shouldPureComponentUpdate from 'react-pure-render';
 import GoogleMap from 'google-map-react';
 import controllable from 'react-controllables';
+import {FormControl} from 'react-bootstrap';
 
 import LocationsList from './LocationsList.jsx';
 import LocationMarker from './LocationMarker.jsx';
@@ -28,7 +29,7 @@ export default class IndexPage extends React.Component {
   constructor() {
     super();
     this.state = { 
-      postcode: 'N7',
+      postcode: '',
       items: [],
       gmap: {
         center: {lat: 51.560782, lng: -0.120671},
@@ -100,34 +101,45 @@ export default class IndexPage extends React.Component {
         }
       });
       return (
-        <div>
-          <div>
-            <h2>{this.state.postcode}</h2>
-            <input type="text"
-              placeholder="Search..."
+        <div className="row">
+          <div className="col-xs-12">
+            <h2>
+              {
+                (this.state.postcode)
+                  ? <span>Search for <strong>{this.state.postcode}</strong>...</span>
+                  : null
+              }
+            </h2>
+          </div>
+          <div className="col-md-6">
+            <FormControl type="text"
+              placeholder="Search by postcode..."
               defaultValue={this.state.postcode}
               onChange={this.handleChange}
               onBlur={this.handleBlur} />
+            <br />
+            <LocationsList items={this.state.items} />
           </div>
-          <div className="map">
-            <GoogleMap
-              bootstrapURLKeys={{
-                key: 'AIzaSyCTbm6xphy2Y_qqpbj1NqqPZ0ZbcfXg7Qw'
-              }}
-              defaultCenter={this.state.gmap.center}
-              defaultZoom={this.state.gmap.zoom}
-              center={this.props.center}
-              zoom={this.props.zoom}
-              hoverDistance={K_SIZE / 2}
-              onChange={this.onChange}
-              onChildClick={this.onChildClick}
-              onChildMouseEnter={this.onChildMouseEnter}
-              onChildMouseLeave={this.onChildMouseLeave}
-              >
-              {places}
-            </GoogleMap>
+          <div className="col-md-6">
+            <div className="map">
+              <GoogleMap
+                bootstrapURLKeys={{
+                  key: 'AIzaSyCTbm6xphy2Y_qqpbj1NqqPZ0ZbcfXg7Qw'
+                }}
+                defaultCenter={this.state.gmap.center}
+                defaultZoom={this.state.gmap.zoom}
+                center={this.props.center}
+                zoom={this.props.zoom}
+                hoverDistance={K_SIZE / 2}
+                onChange={this.onChange}
+                onChildClick={this.onChildClick}
+                onChildMouseEnter={this.onChildMouseEnter}
+                onChildMouseLeave={this.onChildMouseLeave}
+                >
+                {places}
+              </GoogleMap>
+            </div>
           </div>
-          <LocationsList items={this.state.items} />
         </div>
       );
     } else {

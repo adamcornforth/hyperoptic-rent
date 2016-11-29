@@ -4,6 +4,15 @@ Quick tool which returns the "enabled" Hyperoptic (1Gbps fibre) locations for a 
 
 > **Note**: Please be smart about how you scrape data and please do not use these tools without the permission of any target websites, or for commercial purposes. This tool has been created for learning purposes only!
 
+## Sample Output 
+![Sample output](http://i.imgur.com/srhhqtO.jpg)
+
+## Instructions 
+
+Install with `npm install`, run with `npm start`. 
+
+Access the project at `localhost:3000`.
+
 ## Todo
 
 - [x] Add functionality to fetch Hyperoptic locations
@@ -16,15 +25,6 @@ Quick tool which returns the "enabled" Hyperoptic (1Gbps fibre) locations for a 
 - [ ] Allow users to input their own Zoopla API key so they can perform their own searches
 - [ ] Add additional styling to the results/locations list
 - [ ] Allow tweaking of Zoopla API calls (filtering on radius, number of beds, price, etc)
-
-## Sample Output 
-![Sample output](http://i.imgur.com/srhhqtO.jpg)
-
-## Instructions 
-
-Install with `npm install`, run with `npm start`. 
-
-Access the project at `localhost:3000`.
 
 ## Information Sources 
 

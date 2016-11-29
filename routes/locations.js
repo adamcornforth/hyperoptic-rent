@@ -35,10 +35,10 @@ router.get('/locations/:postcode', (req, res, next) => {
             // store the location we've matched with
             if(result[0] !== undefined) {
               result = {location, results: result.length, result}
-              results.push(result);
             } else {
               result = {location, results: 0, result: []};
             }
+            results.push(result);
           });
           res.json(results);
         })

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon src/server.js --watch --watch routes/ --exec babel-node & webpack-dev-server --inline --progress --watch --hot",
+    "start": "nodemon src/server.js --watch routes/ --exec babel-node & webpack-dev-server --inline --progress --watch --hot",
     "build": "babel src -d dist",
     "serve": "node dist/index.js"
   },

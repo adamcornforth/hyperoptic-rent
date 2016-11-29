@@ -1047,4 +1047,4 @@ module.exports = [ { siteId: 63,
     salesRepEmail: 'dan.fuller@hyperoptic.com',
     postCodes: null,
     underConstruction: false,
-    imageSiteLink: 'https://www.hyperoptic.com/wp-content/themes/hyperoptic/images/sites/3277844601.jpg' } ]
+    imageSiteLink: 'https://www.hyperoptic.com/wp-content/themes/hyperoptic/images/sites/3277844601.jpg' } ];

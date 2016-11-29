@@ -2,12 +2,9 @@ var request = require('request');
 var Xray = require('x-ray');
 var x = Xray();
 
-// just cache a set of locations for now so we don't bug hyperoptic's servers!
-let locations = require('./data/locations');
-
 module.exports = {
   getLocations(postcode) {
-    // uncomment to
+    let locations = require('./data/locations');
     // return new Promise(function(resolve, reject) {
     //   request('https://www.hyperoptic.com/map/?q='+postcode, function (error, response) {
     //     // If we've got a response...
@@ -18,12 +15,12 @@ module.exports = {
     //         var locations_str = script.substring(script.indexOf('var locations = ')+17,
     //          script.indexOf('}];') +1);
     //         var locations = JSON.parse("[" + locations_str + "]");
-    //
+    
     //         // Filter to only include locations Taking Orders
     //         locations = locations.filter(function(location) {
-    //           return location.status == 'Taking Orders';
+    //           return location.status == 'Taking Orders' && location.greaterCityLocator === postcode;
     //         });
-    //
+    
     //         resolve(locations);
     //       });
     //     } else {
@@ -33,7 +30,7 @@ module.exports = {
     // });
     return new Promise((resolve) => {
       // reject({'status':404, 'message': "No response from Hyperoptic..."});
-      locations = locations.filter((location => location.greaterCityLocator === 'N7'));
+      locations = locations.filter((location => location.status == 'Taking Orders' && location.greaterCityLocator === postcode));
 
       resolve(locations);
     });

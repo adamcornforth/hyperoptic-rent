@@ -12,8 +12,8 @@ import { match, RouterContext } from 'react-router';
 import routes from './routes';
 import NotFoundPage from './components/NotFoundPage';
 
-const index = require('./../routes/index');
-const locations = require('./../routes/locations');
+const index = require('./routes/index');
+const locations = require('./routes/locations');
 
 const app = express();
 const server = new Server(app);

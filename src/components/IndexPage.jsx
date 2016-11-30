@@ -5,12 +5,12 @@ import GoogleMap from 'google-map-react';
 import controllable from 'react-controllables';
 import {FormGroup, InputGroup, Button, FormControl, Glyphicon} from 'react-bootstrap';
 
-import LocationsList from './LocationsList.jsx';
-import LocationMarker from './LocationMarker.jsx';
+import LocationsList from './LocationsList';
+import LocationMarker from './LocationMarker';
 
 import {K_SIZE} from './location_marker_hover_styles.js';
 
-let postcodes = require('./../../routes/models/data/locations');
+let postcodes = require('./../routes/models/data/locations');
 
 @controllable(['center', 'zoom', 'hoverKey', 'clickKey'])
 export default class IndexPage extends React.Component {
@@ -77,11 +77,11 @@ export default class IndexPage extends React.Component {
         return result.json();
       })
       .then((json) => {
-        this.setState({items:json});
+        this.setState({items:json.results, results_count:json.rentals});
         
-        if(json.length && json[0].location.latitude) {
+        if(json.results.length && json.results[0].location.latitude) {
           this.setState({no_items:false});
-          this.setState({center:{lat:parseFloat(json[0].location.latitude), lng: parseFloat(json[0].location.longitude)}, zoom: 14});
+          this.setState({center:{lat:parseFloat(json.results[0].location.latitude), lng: parseFloat(json.results[0].location.longitude)}, zoom: 14});
         } else {
           this.setState({no_items:true});
         }
@@ -116,7 +116,7 @@ export default class IndexPage extends React.Component {
             <InputGroup>
               <FormControl type="text"
                 key="postcode-search"
-                placeholder="Search by postcode..."
+                placeholder="Search by postcode district e.g. N7, E1, W9..."
                 value={this.state.postcode}
                 onChange={this.handleChange}
                 onBlur={this.handleBlur} />
@@ -130,7 +130,7 @@ export default class IndexPage extends React.Component {
           {
             (this.state.items.length)  ? 
             (
-              <LocationsList items={this.state.items} postcode={this.state.postcode} />
+              <LocationsList items={this.state.items} results_count={this.state.results_count} postcode={this.state.postcode} />
             )
             : ( 
                 (this.state.no_items) ? 

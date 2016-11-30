@@ -6,4 +6,7 @@ html
     link(rel='stylesheet', href='/css/style.css')
   body
     block content
-    script(src='http://localhost:8080/bundle.js')
+    if 'prod' == process.env.NODE_ENV
+      script(src='/js/bundle.js')
+    else
+      script(src='http://localhost:8080/bundle.js')

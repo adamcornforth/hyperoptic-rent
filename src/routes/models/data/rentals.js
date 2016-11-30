@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = {"listing" : {
    "country":"England",
    "result_count":143,
    "longitude":-0.1201795,
@@ -5835,4 +5835,4 @@ module.exports = {
       "latitude_max":"51.565354"
    },
    "postcode":"N7"
-};
+}};

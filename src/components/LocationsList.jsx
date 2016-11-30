@@ -16,7 +16,7 @@ export default class LocationsList extends React.Component {
             return (
                 <Panel header={
                     (this.props.postcode)
-                      ? <p><small>Your search for <strong>{this.props.postcode}</strong>...</small></p>
+                      ? <p><small>Your search for <strong>{this.props.postcode}</strong>... <span className="pull-right">(from {this.props.results_count} rentals)</span></small></p>
                       : null
                   }>
                   <Media.List>
@@ -40,7 +40,7 @@ export default class LocationsList extends React.Component {
                               {
                                 return (<Media key={rental_id}>
                                           <Media.Left>
-                                            <img width={128} height="auto" src={rental.item.image_354_255_url} alt="Rental" />
+                                            <img width={88} height="auto" src={rental.item.image_354_255_url} alt="Rental" />
                                           </Media.Left>
                                           <Media.Body>
                                             <a href={rental.item.details_url}>

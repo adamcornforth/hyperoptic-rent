@@ -1,7 +1,7 @@
 // src/components/AppRoutes.jsx
 import React from 'react';
 import { Router, browserHistory } from 'react-router';
-import routes from '../routes.jsx';
+import routes from '../routes';
 
 export default class AppRoutes extends React.Component {
   render() {

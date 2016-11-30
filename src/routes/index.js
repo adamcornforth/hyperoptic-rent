@@ -1,8 +1,8 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
-import routes from './../src/routes';
-import NotFoundPage from './../src/components/NotFoundPage';
+import routes from './../routes';
+import NotFoundPage from './../components/NotFoundPage';
 
 const express = require('express');
 const hyperoptic = require('./models/hyperoptic');

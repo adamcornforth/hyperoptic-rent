@@ -44,7 +44,7 @@ router.get('/locations/:postcode', (req, res, next) => {
             //   result = {location, results: 0, result: []};
             }
           });
-          res.json(results);
+          res.json({rentals: rentals.result_count, results});
         })
         .catch(next);
     })

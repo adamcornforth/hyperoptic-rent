@@ -5,7 +5,7 @@ Quick tool which returns the "enabled" Hyperoptic (1Gbps fibre) locations for a 
 > **Note**: Please be smart about how you scrape data and please do not use these tools without the permission of any target websites, or for commercial purposes. This tool has been created for learning purposes only!
 
 ## Sample Output 
-![Sample output](http://i.imgur.com/TpTVIOn.png)
+![Sample output](http://i.imgur.com/kEaYQbt.png)
 
 ## Instructions 
 
@@ -21,9 +21,9 @@ Access the project at `localhost:3000`.
 - [x] Make the Hyperoptic locations / Zoopla Rentals return a fixed data set for now (to save API calls)
 - [x] Implement basic Google Maps React component
 - [x] Implement Locations List React component
+- [x] Add additional styling to the results/locations list
 - [ ] Improve Google Maps React component (centering on markers, hover over markers, etc)
 - [ ] Allow users to input their own Zoopla API key so they can perform their own searches
-- [ ] Add additional styling to the results/locations list
 - [ ] Allow tweaking of Zoopla API calls (filtering on radius, number of beds, price, etc)
 
 ## Information Sources 

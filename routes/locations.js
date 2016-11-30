@@ -8,7 +8,7 @@ const router = express.Router();
 const options = {
   include: ['score'],
   shouldSort: true,
-  threshold: 0.3,
+  threshold: 0.15,
   location: 0,
   distance: 50,
   maxPatternLength: 32,
@@ -26,12 +26,12 @@ router.get('/locations/:postcode', (req, res, next) => {
   const postcode = req.params.postcode;
   hyperoptic.getLocations(postcode)
     .then((locations) => {
-      console.log('got '+locations.length+' locations');
+      console.log('got '+locations.length +' locations');
       zoopla.getRentals(postcode)
         .then((rentals) => {
-          console.log('got '+rentals.length+' rentals');
+          console.log('got '+rentals.listing.length+' rentals ('+rentals.result_count+' total)');
           // initiate a fuzzy search on the rentals
-          const fuse = new Fuse(rentals, options),
+          const fuse = new Fuse(rentals.listing, options),
             results = [];
 
           locations.forEach((location) => {

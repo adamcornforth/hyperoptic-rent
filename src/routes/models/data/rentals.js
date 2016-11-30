@@ -1,4 +1,4 @@
-module.exports = {"listing" : {
+module.exports = {
    "country":"England",
    "result_count":143,
    "longitude":-0.1201795,
@@ -5822,17 +5822,5 @@ module.exports = {"listing" : {
          "image_url":"http://li.zoocdn.com/b007f62ff4a72fb6a26aad5960295f88c865605b_354_255.jpg",
          "last_published_date":"2016-07-22 00:07:30"
       }
-   ],
-   "street":"",
-   "radius":"0",
-   "town":"",
-   "latitude":51.5534035,
-   "county":"London",
-   "bounding_box":{
-      "longitude_min":"-0.135535",
-      "latitude_min":"51.541453",
-      "longitude_max":"-0.104824",
-      "latitude_max":"51.565354"
-   },
-   "postcode":"N7"
-}};
+   ]
+};

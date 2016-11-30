@@ -21403,7 +21403,6 @@
 	  _createClass(AppRoutes, [{
 	    key: 'render',
 	    value: function render() {
-	      console.log('test router...');
 	      return _react2.default.createElement(_reactRouter.Router, { history: _reactRouter.browserHistory, routes: _routes2.default, onUpdate: function onUpdate() {
 	          return window.scrollTo(0, 0);
 	        } });

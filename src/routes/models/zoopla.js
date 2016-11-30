@@ -17,6 +17,6 @@ module.exports = {
     //     }
     //   });
     // });
-    return new Promise(resolve => resolve(rentals.listing));
+    return new Promise(resolve => resolve(rentals));
   },
 };

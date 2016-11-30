@@ -10,7 +10,7 @@ import LocationMarker from './LocationMarker.jsx';
 
 import {K_SIZE} from './location_marker_hover_styles.js';
 
-const postcodes = require('./../../routes/models/data/locations');
+let postcodes = require('./../../routes/models/data/locations');
 
 @controllable(['center', 'zoom', 'hoverKey', 'clickKey'])
 export default class IndexPage extends React.Component {
@@ -30,6 +30,9 @@ export default class IndexPage extends React.Component {
 
   constructor() {
     super();
+
+    const only_postcodes = postcodes.map(location => location.greaterCityLocator).sort();
+
     this.state = { 
       postcode: 'N7',
       items: [],
@@ -37,11 +40,13 @@ export default class IndexPage extends React.Component {
         center: {lat: 51.560782, lng: -0.120671},
         zoom: 14
       },
-      'locations': postcodes
+      postcodes: [...new Set(only_postcodes)]
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.handlePostcodeClick = this.handlePostcodeClick.bind(this);
+    this.doSearch = this.doSearch.bind(this);
     this.componentDidMount = this.componentDidMount.bind(this);
   }
 
@@ -52,7 +57,17 @@ export default class IndexPage extends React.Component {
   handleBlur(event) {
     this.setState({postcode:event.target.value.toUpperCase(),items:[]});
 
-    fetch('/locations/'+event.target.value.toUpperCase())
+    this.doSearch(event.target.value.toUpperCase());
+  }
+
+  handlePostcodeClick(event) {
+    this.setState({postcode:event.target.getAttribute("data-postcode").toUpperCase(),items:[]});
+
+    this.doSearch(event.target.getAttribute("data-postcode").toUpperCase());
+  }
+
+  doSearch(postcode) {
+    fetch('/locations/'+postcode)
       .then((result) => {
         return result.json();
       })
@@ -109,8 +124,9 @@ export default class IndexPage extends React.Component {
         </div>
         <div className="col-md-6">
           <FormControl type="text"
+            key="postcode-search"
             placeholder="Search by postcode..."
-            defaultValue={this.state.postcode}
+            value={this.state.postcode}
             onChange={this.handleChange}
             onBlur={this.handleBlur} />
           <br />
@@ -128,14 +144,6 @@ export default class IndexPage extends React.Component {
                 )
               )
           }
-          <br />
-          <small className='text-muted'>
-            {
-              this.state.locations.map(location => {
-                return <span>{location.greaterCityLocator} </span>
-              })
-            }
-          </small>
         </div>
         <div className="col-md-6">
           <div className="map">
@@ -157,7 +165,7 @@ export default class IndexPage extends React.Component {
                   >
                   {
                     this.state.items.map(result => {
-                      if(result.results) {
+                      if(result.result.length) {
                         return (
                           <LocationMarker
                             key={result.location.siteId}
@@ -167,6 +175,8 @@ export default class IndexPage extends React.Component {
                             // use your hover state (from store, react-controllables etc...)
                             hover={this.props.hoverKey === result.location.siteId} />
                         );
+                      } else {
+                        return null;
                       }
                     })
                   }
@@ -175,6 +185,19 @@ export default class IndexPage extends React.Component {
               : null
             }  
           </div>
+        </div>
+        <div className="col-xs-12">
+          <small className='text-muted'>
+            {this.state.postcodes.length ? (
+              <span>All Hyperoptic Postcodes <br /><br /></span>
+              ) : null
+            }
+            {
+              this.state.postcodes.map(postcode => {
+                return <a href='#' className={this.state.postcode === postcode ? "btn btn-primary btn-xs" : "btn btn-default btn-xs"} key={postcode} onClick={this.handlePostcodeClick} data-postcode={postcode}>{postcode} </a>
+              })
+            }
+          </small>
         </div>
       </div>
     );

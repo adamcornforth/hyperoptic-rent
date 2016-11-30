@@ -30,7 +30,7 @@ module.exports = {
     // });
     return new Promise((resolve) => {
       // reject({'status':404, 'message': "No response from Hyperoptic..."});
-      locations = locations.filter((location => location.status == 'Taking Orders' && location.greaterCityLocator === postcode));
+      locations = locations.filter((location => location.status == 'Taking Orders' && location.greaterCityLocator == postcode));
 
       resolve(locations);
     });

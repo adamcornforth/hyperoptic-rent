@@ -4,6 +4,7 @@ import shouldPureComponentUpdate from 'react-pure-render';
 import GoogleMap from 'google-map-react';
 import controllable from 'react-controllables';
 import {FormGroup, InputGroup, Button, FormControl, Glyphicon} from 'react-bootstrap';
+import 'whatwg-fetch';
 
 import LocationsList from './LocationsList';
 import LocationMarker from './LocationMarker';
@@ -94,7 +95,6 @@ export default class IndexPage extends React.Component {
   }
 
   handleLocationClick(key, childProps) {
-    console.log("child click", key, childProps.postcode);
     this.setState({postcode: childProps.postcode, items:[]});
     this.doSearch(childProps.postcode);
   }

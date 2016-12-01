@@ -20,9 +20,9 @@ export default class LocationMarker extends React.Component {
   }
 
   render() {
-    const style = (this.props.results | this.props.$hover) ? locationMarkerHighlight : locationMarker;
+    const style = (this.props.results || this.props.$hover) ? locationMarkerHighlight : locationMarker;
     const style_span = this.props.results ? locationMarkerTextHighlight : locationMarkerText;
-    
+
     return (
        <div style={style}>
           { 

@@ -27,6 +27,7 @@
     "react-router": "^2.6.1",
     "serve-favicon": "~2.3.0",
     "webpack": "^1.13.3",
+    "whatwg-fetch": "^2.0.1",
     "x-ray": "^2.3.1"
   },
   "devDependencies": {

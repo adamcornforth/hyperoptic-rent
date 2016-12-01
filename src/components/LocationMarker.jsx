@@ -1,12 +1,9 @@
 import React, {PropTypes, Component} from 'react';
 import shouldPureComponentUpdate from 'react-pure-render';
-import {locationMarker, locationMarkerHover, locationMarkerText, locationMarkerTextHover} from './location_marker_hover_styles.js';
+import {locationMarker, locationMarkerHighlight, locationMarkerText, locationMarkerTextHighlight} from './location_marker_highlight_styles.js';
 
 export default class LocationMarker extends React.Component {
   static propTypes = {
-    // GoogleMap pass $hover props to hovered components
-    // to detect hover it uses internal mechanism, explained in x_distance_hover example
-    $hover: PropTypes.bool,
     text: PropTypes.string
   };
 
@@ -18,12 +15,21 @@ export default class LocationMarker extends React.Component {
     super(props);
   }
 
+  setHover(hover) {
+    this.props.hover = hover;
+  }
+
   render() {
-    const style = this.props.hover ? locationMarkerHover : locationMarker;
-    const style_span = this.props.hover ? locationMarkerTextHover : locationMarkerText;
+    const style = (this.props.results | this.props.$hover) ? locationMarkerHighlight : locationMarker;
+    const style_span = this.props.results ? locationMarkerTextHighlight : locationMarkerText;
+    
     return (
        <div style={style}>
-          <span style={style_span}>{this.props.text}</span>
+          { 
+            this.props.results ? 
+              (<span style={style_span}>{this.props.text}</span>) 
+            : null
+          }
        </div>
     );
   }

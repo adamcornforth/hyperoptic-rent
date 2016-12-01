@@ -16,10 +16,10 @@ const locationMarker = {
   cursor: 'pointer'
 };
 
-const locationMarkerHover = {
+const locationMarkerHighlight = {
   ...locationMarker,
-  border: '5px solid #3f51b5',
-  color: '#fff'
+  border: '1px solid #ff2222',
+  backgroundColor: '#ff6666'
 };
 
 const locationMarkerText = {
@@ -33,8 +33,8 @@ const locationMarkerText = {
   marginLeft: '7px'
 };
 
-const locationMarkerHoverText = {
-  ...locationMarkerText,
+const locationMarkerTextHighlight = {
+  ...locationMarkerText
 };
 
-export {locationMarker, locationMarkerHover, locationMarkerText, locationMarkerHoverText, K_SIZE};
+export {locationMarker, locationMarkerHighlight, locationMarkerText, locationMarkerTextHighlight, K_SIZE};

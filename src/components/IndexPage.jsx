@@ -119,25 +119,6 @@ export default class IndexPage extends React.Component {
                 </InputGroup.Button>
               </InputGroup>
             </FormGroup>
-            {
-              (this.state.items.length)  ? 
-              (
-                <LocationsList items={this.state.items} results_count={this.state.results_count} postcode={this.state.postcode} />
-              )
-              : ( 
-                  (this.state.no_items) ? 
-                  (
-                    <div>Sorry, no results could be found.</div>
-                  ) : 
-                  ( (this.state.postcode) ? 
-                    (
-                      <div>Loading...</div> 
-                    ) : null
-                  )
-                )
-            }
-          </div>
-          <div className="col-md-6">
             <div className="map">
               <GoogleMap
                 bootstrapURLKeys={{
@@ -184,6 +165,26 @@ export default class IndexPage extends React.Component {
                 }
               </GoogleMap>
             </div>
+          </div>
+          <div className="col-md-6">
+            
+            {
+              (this.state.items.length)  ? 
+              (
+                <LocationsList items={this.state.items} results_count={this.state.results_count} postcode={this.state.postcode} />
+              )
+              : ( 
+                  (this.state.no_items) ? 
+                  (
+                    <div>Sorry, no results could be found.</div>
+                  ) : 
+                  ( (this.state.postcode) ? 
+                    (
+                      <div>Loading...</div> 
+                    ) : null
+                  )
+                )
+            }
           </div>
           <div className="col-xs-12">
             <small className='text-muted'>

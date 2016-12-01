@@ -5,13 +5,26 @@ Quick tool which returns the "enabled" Hyperoptic (1Gbps fibre) locations for a 
 > **Note**: Please be smart about how you scrape data and please do not use these tools without the permission of any target websites, or for commercial purposes. This tool has been created for learning purposes only!
 
 ## Sample Output 
-![Sample output](http://i.imgur.com/kEaYQbt.png)
+![Sample output](http://i.imgur.com/DvPJg9b.png)
 
 ## Instructions 
 
-Install with `npm install`, run with `npm start`. 
+Install dependencies with `npm install`, run with `npm start`. 
 
-Access the project at `localhost:3000`.
+Access the project at `http://localhost:3000`.
+
+### Build 
+
+You can build the project to the `dist/` directory and then serve up the project using:
+
+```
+npm run build
+npm run serve
+```
+
+### Zoopla API Key
+
+Please [register for a Zoopla API key](http://developer.zoopla.com/) if you wish to use this project.
 
 ## Todo
 
@@ -22,7 +35,7 @@ Access the project at `localhost:3000`.
 - [x] Implement basic Google Maps React component
 - [x] Implement Locations List React component
 - [x] Add additional styling to the results/locations list
-- [ ] Improve Google Maps React component (centering on markers, hover over markers, etc)
+- [x] Improve Google Maps React component (centering on markers, hover over markers, etc)
 - [ ] Allow users to input their own Zoopla API key so they can perform their own searches
 - [ ] Allow tweaking of Zoopla API calls (filtering on radius, number of beds, price, etc)
 

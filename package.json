@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon src/server.js --watch routes/ --exec babel-node & webpack-dev-server --host 0.0.0.0 --inline --progress --watch --hot",
+    "dev": "nodemon src/server.js --watch routes/ --exec babel-node & webpack-dev-server --host 0.0.0.0 --inline --progress --watch --hot",
     "build": "rm -rf dist && mkdir dist && babel src/ -d dist/ && webpack && cp -r src/views dist/views && cp -r src/static/css dist/static/css",
-    "serve": "NODE_ENV=prod node ./dist/server.js",
-    "postinstall": "npm run build && NODE_ENV=prod PORT=8080 nodemon ./dist/server.js"
+    "start": "NODE_ENV=prod PORT=8080 nodemon ./dist/server.js",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "babel-cli": "^6.11.4",
@@ -50,5 +50,8 @@
     "react-hot-loader": "^1.3.1",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
+  },
+  "engines": {
+    "node": "6.3.1"
   }
 }

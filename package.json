@@ -6,7 +6,7 @@
     "start": "nodemon src/server.js --watch routes/ --exec babel-node & webpack-dev-server --host 0.0.0.0 --inline --progress --watch --hot",
     "build": "rm -rf dist && mkdir dist && babel src/ -d dist/ && webpack && cp -r src/views dist/views && cp -r src/static/css dist/static/css",
     "serve": "NODE_ENV=prod node ./dist/server.js",
-    "postinstall": "npm run build && NODE_ENV=prod node ./dist/server.js"
+    "postinstall": "npm run build && NODE_ENV=prod nodemon ./dist/server.js"
   },
   "dependencies": {
     "babel-cli": "^6.11.4",
@@ -35,7 +35,9 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-es2015": "^6.18.0",
-    "babel-preset-stage-2": "^6.18.0"
+    "babel-preset-stage-2": "^6.18.0",
+    "react-pure-render": "^1.0.2",
+    "nodemon": "^1.11.0",
   },
   "devDependencies": {
     "eslint": "^3.11.0",
@@ -44,10 +46,8 @@
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.7.1",
     "http-server": "^0.9.0",
-    "nodemon": "^1.11.0",
     "react-controllables": "^0.6.0",
     "react-hot-loader": "^1.3.1",
-    "react-pure-render": "^1.0.2",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }

@@ -17,7 +17,7 @@ Rename the `.env.example` file to `.env` and populate it with your Zoopla API ke
 ZOOPLA_KEY=ZOOPA_KEY_HERE
 ```
 
-Install the project dependencies with `npm install`, run with `npm start`. 
+Install the project dependencies with `npm install`, run with `npm run dev`. 
 
 Access the project at `http://localhost:3000`.
 
@@ -27,7 +27,7 @@ You can build the project to the `dist/` directory and then serve up the project
 
 ```
 npm run build
-npm run serve
+npm start
 ```
 
 ## Todo

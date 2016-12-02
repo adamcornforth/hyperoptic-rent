@@ -27215,6 +27215,10 @@
 	      fetch('/locations/' + postcode).then(function (result) {
 	        return result.json();
 	      }).then(function (json) {
+	        if (json.status == 500) {
+	          throw json;
+	        }
+
 	        _this2.setState({ items: json.results, results_count: json.rentals });
 
 	        if (json.results.length && json.results[0].location.latitude) {
@@ -27223,6 +27227,8 @@
 	        } else {
 	          _this2.setState({ no_items: true });
 	        }
+	      }).catch(function (err) {
+	        _this2.setState({ no_items: true, error: err.message, items: [] });
 	      });
 	    }
 	  }, {
@@ -27271,19 +27277,6 @@
 	                )
 	              )
 	            ),
-	            this.state.items.length ? _react2.default.createElement(_LocationsList2.default, { items: this.state.items, results_count: this.state.results_count, postcode: this.state.postcode }) : this.state.no_items ? _react2.default.createElement(
-	              'div',
-	              null,
-	              'Sorry, no results could be found.'
-	            ) : this.state.postcode ? _react2.default.createElement(
-	              'div',
-	              null,
-	              'Loading...'
-	            ) : null
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'col-md-6' },
 	            _react2.default.createElement(
 	              'div',
 	              { className: 'map' },
@@ -27326,6 +27319,24 @@
 	                })
 	              )
 	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'col-md-6' },
+	            this.state.error ? _react2.default.createElement(
+	              'p',
+	              { className: 'alert alert-danger' },
+	              this.state.error
+	            ) : null,
+	            this.state.items.length ? _react2.default.createElement(_LocationsList2.default, { items: this.state.items, results_count: this.state.results_count, postcode: this.state.postcode }) : this.state.no_items ? _react2.default.createElement(
+	              'div',
+	              null,
+	              'Sorry, no results could be found.'
+	            ) : this.state.postcode ? _react2.default.createElement(
+	              'div',
+	              null,
+	              'Loading...'
+	            ) : null
 	          ),
 	          _react2.default.createElement(
 	            'div',

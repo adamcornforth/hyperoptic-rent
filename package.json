@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "nodemon src/server.js --watch routes/ --exec babel-node & webpack-dev-server --host 0.0.0.0 --inline --progress --watch --hot",
-    "build": "rm -rf dist && mkdir dist && babel src/ -d dist/ && webpack && cp -r src/views dist/views && cp -r src/static/css dist/static/css",
+    "build": "rm -rf dist && mkdir dist && babel src/ -d dist/ && webpack && cp -r src/views dist/views && cp -r src/static/css dist/static/css && cp -r src/static/js dist/static/js",
     "start": "NODE_ENV=prod nodemon ./dist/server.js",
     "postinstall": "npm run build"
   },

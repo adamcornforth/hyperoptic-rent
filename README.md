@@ -9,7 +9,15 @@ Quick tool which returns the "enabled" Hyperoptic (1Gbps fibre) locations for a 
 
 ## Instructions 
 
-Install dependencies with `npm install`, run with `npm start`. 
+Firstly [sign up for a Zoopla API key](http://developer.zoopla.com/).
+
+Rename the `.env.example` file to `.env` and populate it with your Zoopla API key: 
+
+```
+ZOOPLA_KEY=ZOOPA_KEY_HERE
+```
+
+Install the project dependencies with `npm install`, run with `npm start`. 
 
 Access the project at `http://localhost:3000`.
 
@@ -22,10 +30,6 @@ npm run build
 npm run serve
 ```
 
-### Zoopla API Key
-
-Please [register for a Zoopla API key](http://developer.zoopla.com/) if you wish to use this project.
-
 ## Todo
 
 - [x] Add functionality to fetch Hyperoptic locations
@@ -36,7 +40,7 @@ Please [register for a Zoopla API key](http://developer.zoopla.com/) if you wish
 - [x] Implement Locations List React component
 - [x] Add additional styling to the results/locations list
 - [x] Improve Google Maps React component (centering on markers, hover over markers, etc)
-- [ ] Allow users to input their own Zoopla API key so they can perform their own searches
+- [x] Allow custom Zoopla API key via .env so people can perform their own searches
 - [ ] Allow tweaking of Zoopla API calls (filtering on radius, number of beds, price, etc)
 
 ## Information Sources 

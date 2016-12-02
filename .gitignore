@@ -2,3 +2,5 @@ node_modules
 .DS_Store
 .idea
 babel_cache
+dist
+.env

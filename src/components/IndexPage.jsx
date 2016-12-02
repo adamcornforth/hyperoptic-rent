@@ -80,6 +80,10 @@ export default class IndexPage extends React.Component {
         return result.json();
       })
       .then((json) => {
+        if(json.status == 500) {
+          throw json;
+        }
+        
         this.setState({items:json.results, results_count:json.rentals});
         
         if(json.results.length && json.results[0].location.latitude) {
@@ -88,6 +92,8 @@ export default class IndexPage extends React.Component {
         } else {
           this.setState({no_items:true});
         }
+      }).catch((err) => {
+        this.setState({no_items:true, error:err.message, items:[]});
       });
   }
 
@@ -167,7 +173,14 @@ export default class IndexPage extends React.Component {
             </div>
           </div>
           <div className="col-md-6">
-            
+            {
+              (this.state.error) ?
+                (
+                  <p className="alert alert-danger">
+                    {this.state.error}
+                  </p>
+                ) : null
+            }
             {
               (this.state.items.length)  ? 
               (

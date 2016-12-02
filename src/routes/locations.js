@@ -46,10 +46,12 @@ router.get('/locations/:postcode', (req, res, next) => {
           });
           res.json({rentals: rentals.result_count, results});
         })
-        .catch(next);
+        .catch((err) => {
+          res.status(500).json(err);    
+        });
     })
     .catch((err) => {
-      res.render('error', { message: 'Error', error: err });
+      res.status(500).json(err);
     });
 });
 

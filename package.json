@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon src/server.js --watch routes/ --exec babel-node & webpack-dev-server --host 0.0.0.0 --inline --progress --watch --hot",
     "build": "rm -rf dist && mkdir dist && babel src/ -d dist/ && webpack && cp -r src/views dist/views && cp -r src/static/css dist/static/css",
-    "serve": "NODE_ENV=prod node ./dist/server.js"
+    "serve": "NODE_ENV=prod node ./dist/server.js",
+    "postinstall": "npm run build && NODE_ENV=prod nodemon ./dist/server.js"
   },
   "dependencies": {
     "babel-cli": "^6.11.4",

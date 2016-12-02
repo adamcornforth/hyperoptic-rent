@@ -5,7 +5,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-require('dotenv').config()
+require('dotenv').config({silent: true})
 import { Server } from 'http';
 import React from 'react';
 import { renderToString } from 'react-dom/server';

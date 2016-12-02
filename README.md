@@ -1,10 +1,8 @@
 # Hyperoptic Rentals Finder 
 
-Quick tool which returns the "enabled" Hyperoptic (1Gbps fibre) locations for a given postcode district using the Zoopla property API. 
+Quick tool which returns the "enabled" Hyperoptic (1Gbps fibre) locations for a given postcode district using the Zoopla property API.
 
-## Demo
-
-[Click here](hyperental.herokuapp.com) for a demo. Please note that this is using my Zoopla API key which has a max of 100 calls per hour, so please be nice!
+Try it out at [https://hyperental.herokuapp.com/](https://hyperental.herokuapp.com/).
 
 > **Note**: Please be smart about how you scrape data and please do not use these tools without the permission of any target websites, or for commercial purposes. This tool has been created for learning purposes only!
 
